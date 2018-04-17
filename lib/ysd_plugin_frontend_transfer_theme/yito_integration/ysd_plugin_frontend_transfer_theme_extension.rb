@@ -31,10 +31,22 @@ module YsdPluginFrontendTransferTheme
     #
     # Return the front end skin
     #
-    def frontend_skin
+    def frontend_skin(context={})
       ['transfer']
     end
-    
+
+    #
+    # Configure if the theme uses custom js
+    #
+    def frontend_skin_custom_js(context={})
+      if SystemConfiguration::Variable.get_value('frontend.skin', nil) == 'transfer'
+        return true
+      else
+        return false
+      end
+    end
+
+
     #
     # Page layout : Get the page layout
     #
